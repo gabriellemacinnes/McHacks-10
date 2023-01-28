@@ -1,11 +1,10 @@
-// Inject the payload.js script into the current tab after the popout has loaded
-window.addEventListener('load', function (evt) {
-	chrome.extension.getBackgroundPage().chrome.tabs.executeScript(null, {
-		file: 'payload.js'
-	});;
+document.getElementById("sum_text").addEventListener('click', get_text);
+
+chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+    tabs[0].url;     //url
+    tabs[0].title;   //title
 });
 
-// Listen to messages from the payload.js script and write to popout.html
-chrome.runtime.onMessage.addListener(function (message) {
-	document.getElementById('pagetitle').innerHTML = message;
-});
+function get_text() {
+  document.getElementById('pagetitle').innerHTML = window.title
+}

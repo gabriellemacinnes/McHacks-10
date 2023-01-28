@@ -1,23 +1,15 @@
 {
-	"manifest_version": 2,
+  "manifest_version": 3,
 
-	"name": "Hello World",
-	"description": "A simple page-scraping extension for Chrome",
-	"version": "1.0",
-	"author": "@thomasforth",
+  "name": "Hello World",
+  "description": "A simple page-scraping extension for Chrome",
+  "version": "1.0",
 
-	"background": {
-		"scripts": ["popup.js"],
-		"persistent": true
-	},
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Hello World",
+    "default_icon": "logo.png"
+  },
 
-	"permissions": [
-        "tabs",
-        "http://*/",
-        "https://*/"
-    ],
-	"browser_action": {
-		"default_icon": "logo.png",
-		"default_popup": "popup.html"
-	}
+  "host_permissions": ["<all_urls>"]
 }
