@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+
+  "name": "AI Summarization",
+  "description": "This extension summarizes webpages with AI.",
+  "version": "1.0",
+
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "AI Summarization"
+  },
+
+  "background": {
+    "service_worker" : "background.js"
+  },
+
+  "permissions": [
+		"tabs",
+		"background",
+        "identity",
+        "notifications"
+	],
+
+
+  "host_permissions": ["http://localhost:5000/*"]
+}
