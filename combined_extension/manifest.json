@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "manifest_version": 3,
   "action":{
-    "default_icon": "baguette.png",
+    "default_icon": "images/bread.png",
     "default_popup": "index.html"
   },
   "content_scripts": [

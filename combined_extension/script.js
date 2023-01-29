@@ -8,14 +8,36 @@ highlightButton.addEventListener('click', createSummary);
 
 var summary = "this is the summary"
 var url = "www.testwebsite.com"
-document.getElementById("myText").innerHTML = url;
+//document.getElementById("myText").innerHTML = url;
+
+async function getCurrentURL() {
+  let queryOptions = { active: true, lastFocusedWindow: true };
+  // `tab` will either be a `tabs.Tab` instance or `undefined`.
+  let [tab] = await chrome.tabs.query(queryOptions);
+  $.post("http://127.0.0.1:8000/app/url_parse",
+  {
+    url: tab.url,
+    },
+    function(data, status){
+      alert("Data: " + data + "\nStatus: " + status);
+    });
+
+  alert("yay!")
+}
+
 function createSummary() {
-    const myWindow = window.open();
-    myWindow.document.open();
-    myWindow.document.write("<h3> Summary generated using Co:here</h3>");
-    myWindow.document.write("from: ");
-    myWindow.document.write(document.location.href);
-    myWindow.document.write("<br>");
-    myWindow.document.write(summary);
-    myWindow.document.close();
+  getCurrentURL();
+
+  //document.getElementById('text').innerHTML = tab.url;
+
+  const myWindow = window.open();
+  myWindow.document.open();
+  myWindow.document.write("<h3> Summary generated using Co:here</h3>");
+  myWindow.document.write("from: ");
+  myWindow.document.write(document.location.href);
+  myWindow.document.write("<br>");
+  myWindow.document.write(summary);
+  myWindow.document.close();
+
+  return tab.url;
   }
