@@ -11,8 +11,7 @@
     "default_icon": "logo.png"
   },
   "background": {
-    "service_worker" : "background.js",
-    "scripts": ["https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js", "background.js"]
+    "service_worker" : "background.js"
   },
 
   "host_permissions": ["<all_urls>"]
