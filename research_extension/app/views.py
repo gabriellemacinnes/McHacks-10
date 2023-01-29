@@ -6,12 +6,25 @@ from django.shortcuts import render
 import json
 from django.contrib.auth.models import User #####
 from django.http import JsonResponse, HttpResponse ####
+from django.views.decorators.csrf import csrf_exempt
 
 import wikipedia
 
 
 def index(request):
     return HttpResponse("Hello, world. You're at the wiki index.")
+
+
+@csrf_exempt
+def url_parse(request):
+    if request.method == "POST":
+        data = request.POST
+        url = data.get("url")
+        to_return = {
+            'url': url
+        }
+        return JsonResponse(to_return)
+    return HttpResponse("Hello, world. You're at the url_parser index.")
 
 
 # https://pypi.org/project/wikipedia/#description
