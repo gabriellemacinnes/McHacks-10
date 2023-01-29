@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "manifest_version": 3,
   "action":{
-    "default_icon": "baguette.png"
+    "default_icon": "baguette.png",
+    "default_popup": "popup.html"
   },
   "content_scripts": [
     {

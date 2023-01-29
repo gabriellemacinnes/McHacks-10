@@ -15,7 +15,7 @@ $(function(){
 
 						var notifOptions = {
 							type: "basic",
-							title: "WikiPedia Summary For Your Result",
+							title: "Wikipedia Summary For Your Result",
 							message: result.summary
 						};
 
