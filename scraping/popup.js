@@ -15,21 +15,13 @@ async function getCurrentTab() {
   // `tab` will either be a `tabs.Tab` instance or `undefined`.
   let [tab] = await chrome.tabs.query(queryOptions);
   //document.getElementById('pagetitle').innerHTML = tab.url;
-  $.ajax({
-    url: "/cgi-bin/hello.py",
+  jQuery.ajax({
+    url: "scrape.py",
     type: "POST",
-    data: {"text" : message},
+    data: {"text" : tab.url},
     success: function(response){
-            $("#div").html(response);
+            jQuery("#div").html(response);
     }
 });
   return tab.url;
 }
-$.ajax({
-  type: "POST",
-  url: "scrape.py",
-  data: { param: text}
-  }).done(function(o) {
-      console.log(data);
-      console.log(text);
-  });
