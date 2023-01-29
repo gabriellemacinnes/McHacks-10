@@ -1,19 +1,9 @@
 from bs4 import BeautifulSoup
-from bs4.element import Comment
 
 from urllib.request import urlopen
 import cohere
-import re
 
 co = cohere.Client("o2KYh1CEVLYwS0ePRO4VmKsIWZuaSuz5cDS1MWjZ")
-
-
-def tag_visible(element):
-    if element.parent.name in ['style', 'script', 'head', 'title', 'meta', '[document]']:
-        return False
-    if isinstance(element, Comment):
-        return False
-    return True
 
 
 def get_text(url):
@@ -25,26 +15,8 @@ def get_text(url):
     for text in main_soup.find_all("p"):
         total += text.get_text()
     return total.split(".")
-    #split_string = re.split("\s|(?<!\d)[,.](?!\d)", total)
-    #return split_string
 
-'''
-def get_text(url):
-    page = urlopen(url)
-    html = page.read().decode("utf-8")
-    soup = BeautifulSoup(html, "html.parser")
-    texts = soup.findAll(text=True)
-    visible_texts = filter(tag_visible, texts)
-    total = u" ".join(t.strip() for t in visible_texts)
 
-    total_list = total.split()
-    return total_list
-
-    #text_p = (''.join(s.findAll(text=True)) for s in soup.findAll('p'))
-    #return text_p
-    #return soup.get_text()
-
-'''
 def divide_chunks(l, n):
     # looping till length l
     for i in range(0, len(l), n):
@@ -52,7 +24,6 @@ def divide_chunks(l, n):
 
 
 def create_summary(l):
-    #divided = list(divide_chunks(l, 100))
     divided = list(divide_chunks(l, 3))
     l_sum = []
     for i in divided:

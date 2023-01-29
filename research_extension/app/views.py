@@ -1,7 +1,4 @@
-from django.shortcuts import render
-import json
-from django.contrib.auth.models import User #####
-from django.http import JsonResponse, HttpResponse ####
+from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 
 import wikipedia
@@ -42,7 +39,6 @@ def url_parse(request):
         t = threading.Thread(target=update_summary, args=(raw_text, id), daemon=True)
         t.start()
         return HttpResponse(id)
-        #return JsonResponse({'id': id})
     return HttpResponse(
         "<html><head><style>body {background-color: linen;}h2 {color: maroon;margin-left: 40px;}p {margin-left: 40px;margin-right: 40px;}"
         + "</style></head><body><h2>Here is your most recent summary:</h2><p>" + 
@@ -52,7 +48,6 @@ def url_parse(request):
 def check_sum(request,id):
     state = dict[id]
     return HttpResponse(state)
-    #return JsonResponse({'is_done': state})
 
 
 def update_summary(raw_text, id):
