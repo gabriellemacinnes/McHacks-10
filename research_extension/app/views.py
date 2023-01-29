@@ -46,7 +46,7 @@ def url_parse(request):
     return HttpResponse(
         "<html><head><style>body {background-color: linen;}h2 {color: maroon;margin-left: 40px;}p {margin-left: 40px;margin-right: 40px;}"
         + "</style></head><body><h2>Here is your most recent summary:</h2><p>" + 
-        most_recent_sum + "</p><p>Source: " + "<a href='" + url + "'>Back to Page</a>" + "</p></body></html>")
+        most_recent_sum + "</p><p>Source: " + url + "<br><a href='" + url + "'>Back to Page</a>" + "</p></body></html>")
 
 
 def check_sum(request,id):
