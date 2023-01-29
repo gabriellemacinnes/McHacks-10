@@ -9,6 +9,7 @@ from django.http import JsonResponse, HttpResponse ####
 from django.views.decorators.csrf import csrf_exempt
 
 import wikipedia
+from . import backend
 
 
 def index(request):
@@ -18,12 +19,16 @@ def index(request):
 @csrf_exempt
 def url_parse(request):
     if request.method == "POST":
-        data = request.POST
-        url = data.get("url")
+        url = request.POST.get('url', False)
+        a = backend.get_text(url)
+        print(a)
+        b = backend.create_summary(a)
+        print(b)
         to_return = {
             'url': url
         }
-        return JsonResponse(to_return)
+        #return JsonResponse(to_return)
+        return HttpResponse(url)
     return HttpResponse("Hello, world. You're at the url_parser index.")
 
 
