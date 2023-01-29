@@ -3,6 +3,7 @@ from bs4.element import Comment
 
 from urllib.request import urlopen
 import cohere
+import re
 
 co = cohere.Client("o2KYh1CEVLYwS0ePRO4VmKsIWZuaSuz5cDS1MWjZ")
 
@@ -14,6 +15,7 @@ def tag_visible(element):
         return False
     return True
 
+
 def get_text(url):
     page = urlopen(url)
     html = page.read().decode("utf-8")
@@ -22,7 +24,8 @@ def get_text(url):
     total = ""
     for text in main_soup.find_all("p"):
         total += text.get_text()
-    return total.split()
+    split_string = re.split("\s|(?<!\d)[,.](?!\d)", total)
+    return split_string
 
 '''
 def get_text(url):

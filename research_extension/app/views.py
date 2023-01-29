@@ -1,8 +1,4 @@
 from django.shortcuts import render
-
-# Create your views here.
-
-from django.shortcuts import render
 import json
 from django.contrib.auth.models import User #####
 from django.http import JsonResponse, HttpResponse ####
@@ -50,7 +46,7 @@ def url_parse(request):
     return HttpResponse(
         "<html><head><style>body {background-color: linen;}h2 {color: maroon;margin-left: 40px;}"
         + "</style></head><body><h2>Here is your most recent summary:</h2><p>" + 
-        most_recent_sum + "</p><p>Source:" + url + "</p></body></html>")
+        most_recent_sum + "</p><p>Source: " + "<a href='url'>" + url + "<\a>" + "</p></body></html>")
 
 
 def check_sum(request,id):

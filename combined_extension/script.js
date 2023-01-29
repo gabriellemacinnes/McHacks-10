@@ -3,7 +3,6 @@ highlightButton.addEventListener('click', getCurrentURL);
 
 var summary = "this is the summary"
 var url = "www.testwebsite.com"
-//document.getElementById("myText").innerHTML = url;
 
 var cur_id;
 
@@ -16,7 +15,7 @@ async function getCurrentURL() {
       url: tab.url,
     },
     function(id, status){
-      alert("Id: " + id + "\nStatus: " + status);
+      alert("Summary is being created");
       cur_id = id;
     });
 }
