@@ -40,12 +40,12 @@ def get_text(url):
     #return text_p
     #return soup.get_text()
 
-
+'''
 def divide_chunks(l, n):
     # looping till length l
     for i in range(0, len(l), n):
         yield l[i:i + n]
-'''
+
 
 def create_summary(l):
     divided = list(divide_chunks(l, 100))
@@ -66,7 +66,9 @@ def summarize(string):
         model='xlarge',
         prompt=string,
         max_tokens=40,
-        temperature=1,
+        temperature=0.7,
+        p=0.85,
+        frequency_penalty=0.7,
         stop_sequences=["--"])
 
     summary = response.generations[0].text

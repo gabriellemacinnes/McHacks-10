@@ -18,11 +18,12 @@ def index(request):
 
 
 most_recent_sum = ""
-
+url = ""
 
 @csrf_exempt
 def url_parse(request):
     if request.method == "POST":
+        global url
         url = request.POST.get('url', False)
         raw_text = backend.get_text(url)
         print(raw_text)

@@ -8,6 +8,15 @@ main .toc-container {
 main .col-auto {
   display: none;
 }
+body .global-header {
+  display: none;
+}
+body .ad-risingstar-container {
+  display: none;
+}
+main .ad-bigbox-fixed {
+  display: none;
+}
 
 main .col-md-da-320 {
   display: none;
