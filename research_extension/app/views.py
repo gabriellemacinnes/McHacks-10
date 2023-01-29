@@ -47,7 +47,10 @@ def url_parse(request):
         t.start()
         return HttpResponse(id)
         #return JsonResponse({'id': id})
-    return HttpResponse("Here is your most recent summary: <br>" + most_recent_sum + "<br>Source: " + url)
+    return HttpResponse(
+        "<html><head><style>body {background-color: linen;}h2 {color: maroon;margin-left: 40px;}"
+        + "</style></head><body><h2>Here is your most recent summary:</h2><p>" + 
+        most_recent_sum + "</p><p>Source:" + url + "</p></body></html>")
 
 
 def check_sum(request,id):
