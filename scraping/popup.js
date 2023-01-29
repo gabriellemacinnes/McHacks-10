@@ -14,14 +14,14 @@ async function getCurrentTab() {
   let queryOptions = { active: true, lastFocusedWindow: true };
   // `tab` will either be a `tabs.Tab` instance or `undefined`.
   let [tab] = await chrome.tabs.query(queryOptions);
-  //document.getElementById('pagetitle').innerHTML = tab.url;
-  jQuery.ajax({
-    url: "scrape.py",
+  document.getElementById('pagetitle').innerHTML = "hello";
+  $.ajax({
+    url: "../research_extension/app/views.py",
     type: "POST",
-    data: {"text" : tab.url},
-    success: function(response){
-            jQuery("#div").html(response);
-    }
-});
+    data: {"text" : JSON.parse(tab.url)},
+    success: function() {document.getElementById('pagetitle').innerHTML = "success";},
+    failure: function() {document.getElementById('pagetitle').innerHTML = "failure";}
+  });
+  document.getElementById('pagetitle').innerHTML = tab.url;
   return tab.url;
 }
