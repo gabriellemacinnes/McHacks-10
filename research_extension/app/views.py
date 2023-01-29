@@ -47,7 +47,7 @@ def url_parse(request):
         t.start()
         return HttpResponse(id)
         #return JsonResponse({'id': id})
-    return HttpResponse("Here is your most recent summary: " + most_recent_sum)
+    return HttpResponse("Here is your most recent summary: <br>" + most_recent_sum + "<br>Source: " + url)
 
 
 def check_sum(request,id):
