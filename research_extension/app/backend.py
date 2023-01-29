@@ -24,8 +24,9 @@ def get_text(url):
     total = ""
     for text in main_soup.find_all("p"):
         total += text.get_text()
-    split_string = re.split("\s|(?<!\d)[,.](?!\d)", total)
-    return split_string
+    return total.split(".")
+    #split_string = re.split("\s|(?<!\d)[,.](?!\d)", total)
+    #return split_string
 
 '''
 def get_text(url):
@@ -51,19 +52,21 @@ def divide_chunks(l, n):
 
 
 def create_summary(l):
-    divided = list(divide_chunks(l, 100))
+    #divided = list(divide_chunks(l, 100))
+    divided = list(divide_chunks(l, 3))
     l_sum = []
     for i in divided:
-        i = " ".join(i)
+        i = ".".join(i)
         sum = summarize(i)
         print(sum)
         l_sum.append(sum)
-    total_sum = " ".join(l_sum)
+    total_sum = ".".join(l_sum)
     return total_sum
 
 
 def summarize(string):
-    string = string + "\n In summary: \n --"
+    string = string + "\n In summary: \n ...."
+    print(string)
 
     response = co.generate(
         model='xlarge',
@@ -71,8 +74,8 @@ def summarize(string):
         max_tokens=40,
         temperature=0.7,
         p=0.85,
-        frequency_penalty=0.7,
-        stop_sequences=["--"])
+        frequency_penalty=0.5,
+        stop_sequences=["...."])
 
     summary = response.generations[0].text
     return summary
