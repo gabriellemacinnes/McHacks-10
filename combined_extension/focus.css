@@ -1,0 +1,19 @@
+body > .scaffold > :is(top-nav, navigation-rail, side-nav, footer),
+/*main > .md-page-wrapper > .md-content > .md-article-container template-desktop > .infinite-scroll-container article last > .article-content content md-expanded > .grid gx-0 > .col-auto > :is(family-panel md-article-drawer position-relative d-flex border-right-sm open),*/
+main > :not(:last-child),
+main > :last-child > navigation-tree,
+main .toc-container {
+  display: none;
+}
+main .col-auto {
+  display: none;
+}
+
+main .col-md-da-320 {
+  display: none;
+}
+
+main > :last-child {
+  margin-top: min(10vmax, 10rem);
+  margin-bottom: min(10vmax, 10rem);
+}

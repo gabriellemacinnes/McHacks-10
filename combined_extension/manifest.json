@@ -21,12 +21,21 @@
   },
 
   "permissions": [
+    "activeTab", 
+    "scripting",
 		"tabs",
 		"background",
-        "identity",
-        "notifications"
+    "identity",
+    "notifications"
 	],
-
-
-  "host_permissions": ["http://localhost:5000/*"]
+  "host_permissions": ["<all_urls>"],
+  "commands": {
+    "focus": {
+      "suggested_key": {
+        "default": "Ctrl+B",
+        "mac": "Command+B"
+      },
+      "description": "Run \"focus\" on the current page."
+    }
+  }
 }
