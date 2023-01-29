@@ -38,7 +38,7 @@ def get_text(url):
 
     #text_p = (''.join(s.findAll(text=True)) for s in soup.findAll('p'))
     #return text_p
-    #return soup.get_text()'''
+    #return soup.get_text()
 
 '''
 def divide_chunks(l, n):
