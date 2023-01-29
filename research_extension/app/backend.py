@@ -38,14 +38,14 @@ def get_text(url):
 
     #text_p = (''.join(s.findAll(text=True)) for s in soup.findAll('p'))
     #return text_p
-    #return soup.get_text()
+    #return soup.get_text()'''
 
 
 def divide_chunks(l, n):
     # looping till length l
     for i in range(0, len(l), n):
         yield l[i:i + n]
-'''
+
 
 def create_summary(l):
     divided = list(divide_chunks(l, 100))
