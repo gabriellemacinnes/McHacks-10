@@ -43,6 +43,7 @@ def create_summary(l):
     for i in divided:
         i = " ".join(i)
         sum = summarize(i)
+        print(sum)
         l_sum.append(sum)
     total_sum = " ".join(l_sum)
     return total_sum

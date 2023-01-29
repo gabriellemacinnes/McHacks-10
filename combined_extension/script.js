@@ -4,7 +4,7 @@ function summarize() {
 
 const highlightButton = document.getElementById('toggle-button');
 
-highlightButton.addEventListener('click', createSummary);
+highlightButton.addEventListener('click', getCurrentURL);
 
 var summary = "this is the summary"
 var url = "www.testwebsite.com"
@@ -17,10 +17,7 @@ async function getCurrentURL() {
   $.post("http://127.0.0.1:8000/app/url_parse",
   {
     url: tab.url,
-    },
-    function(data, status){
-      alert("Data: " + data + "\nStatus: " + status);
-    });
+  });
 
   alert("yay!")
 }

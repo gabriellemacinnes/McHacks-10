@@ -9,6 +9,7 @@ from django.http import JsonResponse, HttpResponse ####
 from django.views.decorators.csrf import csrf_exempt
 
 import wikipedia
+import threading
 from . import backend
 
 
@@ -16,20 +17,31 @@ def index(request):
     return HttpResponse("Hello, world. You're at the wiki index.")
 
 
+most_recent_sum = ""
+
+
 @csrf_exempt
 def url_parse(request):
     if request.method == "POST":
         url = request.POST.get('url', False)
-        a = backend.get_text(url)
-        print(a)
-        b = backend.create_summary(a)
-        print(b)
+        raw_text = backend.get_text(url)
+        print(raw_text)
+
+        t = threading.Thread(target=update_summary, args=(raw_text,), daemon=True)
+        t.start()
         to_return = {
             'url': url
         }
-        #return JsonResponse(to_return)
-        return HttpResponse(url)
-    return HttpResponse("Hello, world. You're at the url_parser index.")
+        return JsonResponse(to_return)
+        #return HttpResponse(summary)
+    return HttpResponse("Here is your most recent summary: " + most_recent_sum)
+
+
+def update_summary(raw_text):
+    global most_recent_sum
+    summary = backend.create_summary(raw_text)
+    print(summary)
+    most_recent_sum = summary
 
 
 # https://pypi.org/project/wikipedia/#description
